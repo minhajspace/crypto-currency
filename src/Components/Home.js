@@ -11,21 +11,11 @@ import { useDispatch,useSelector } from 'react-redux';
 
 const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGraph, price, setPrice, pricechange, setPricechange, id, setId }) => {
     const dispatch = useDispatch()
-    const [coins, setCoins] = useState([]);
-
+    const coins = useSelector(state => state.crypto.coinList)
+  
     useEffect(() => {
-        axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=INR&order=market_cap_desc&per_page=50&page=1&sparkline=false")
-            .then(res => {
-                setCoins(res.data);
-                setGraph(res.data[0]);
-                setPrice(res.data[0].current_price);
-                setPricechange(res.data[0].price_change_percentage_24h);
-
-            }).catch(error => {
-                console.log(error);
-            })
             dispatch(getCoinList())
-    }, [setGraph, setPrice, setPricechange])
+    }, [])
 
     const isTablet = useMediaQuery({ query: '(min-width: 1100px)' })
     const isMobile = useMediaQuery({ query: '(min-width: 450px)' })
