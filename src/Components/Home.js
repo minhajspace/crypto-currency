@@ -6,9 +6,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useMediaQuery } from 'react-responsive'
 import { Link } from "react-router-dom";
 import walletpic from '../Assets/wallet.png';
+import {getCoinList} from '../Store/Actions/home.actions'
+import { useDispatch,useSelector } from 'react-redux';
 
 const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGraph, price, setPrice, pricechange, setPricechange, id, setId }) => {
-
+    const dispatch = useDispatch()
     const [coins, setCoins] = useState([]);
 
     useEffect(() => {
@@ -22,6 +24,7 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGra
             }).catch(error => {
                 console.log(error);
             })
+            dispatch(getCoinList())
     }, [setGraph, setPrice, setPricechange])
 
     const isTablet = useMediaQuery({ query: '(min-width: 1100px)' })
