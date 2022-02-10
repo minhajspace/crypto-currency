@@ -8,8 +8,10 @@ import { Link } from "react-router-dom";
 import walletpic from '../Assets/wallet.png';
 import {getCoinList} from '../Store/Actions/home.actions'
 import { useDispatch,useSelector } from 'react-redux';
+import {useHistory } from 'react-router-dom'
 
 const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGraph, price, setPrice, pricechange, setPricechange, id, setId }) => {
+    const history = useHistory()
     const dispatch = useDispatch()
     const coins = useSelector(state => state.crypto.coinList)
   
@@ -47,9 +49,11 @@ const Coindata = ({ parentcallback, filteredWallet, graphCallback, graph, setGra
                 position: "top-center",
                 autoClose: 2000
             })
+            history.push('/wallet')
         }
 
         parentcallback(coin);
+
     }
 
     const TrendingCoins = ({ coin }) => {

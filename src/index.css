@@ -487,3 +487,43 @@ ul li a:hover {
     margin-right: 15px;
   }
 }
+
+.wallet-container {
+  width: 80%;
+  height: auto;
+  margin: 5% auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-col{
+  flex-direction: column;
+}
+
+.justify-center{
+  justify-content: center;
+}
+
+.align-center{
+  align-items:center;
+}
+
+.flex-1{
+  flex: 1;
+}
+
+.btn-common{
+  color: #fff !important;
+  border-radius: 5px !important;
+  margin: 0.5rem 1rem !important;
+}
+
+.buy-btn{
+  background-color: green !important;
+}
+
+.sell-btn{
+  background-color: rgb(248, 59, 59) !important;
+}
